@@ -8,12 +8,13 @@ import os
 from sklearn.model_selection import train_test_split
 from collections import Counter
 
-# Paths - using current workspace directory
+# Paths - updated for new folder structure
 current_dir = os.path.dirname(os.path.abspath(__file__))
-dataset_dir = os.path.join(current_dir, 'Ocular_Toxoplasmosis_Data_V3')
+project_root = os.path.join(current_dir, '..', '..')
+dataset_dir = os.path.join(project_root, 'data', 'Ocular_Toxoplasmosis_Data_V3')
 labels_file = os.path.join(dataset_dir, 'dataset_labels.csv')
 images_dir = os.path.join(dataset_dir, 'images')
-output_dir = os.path.join(current_dir, 'MedCLIP', 'local_data')
+output_dir = os.path.join(project_root, 'data', 'processed')
 
 # Create output directory if it doesn't exist
 os.makedirs(output_dir, exist_ok=True)

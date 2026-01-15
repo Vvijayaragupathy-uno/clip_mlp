@@ -1,0 +1,6 @@
+image,medclip_prediction,medclip_confidence,clip_prediction,clip_confidence,agreement
+131.jpg,inactive,99.9%,active,66.8%,No
+133.jpg,active,99.9%,inactive,64.7%,No
+15410.jpg,inactive,99.8%,inactive,98.0%,Yes
+1833.jpg,inactive,99.9%,inactive,84.5%,Yes
+2078.jpg,active,99.8%,active,90.4%,Yes

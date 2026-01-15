@@ -12,8 +12,10 @@ from torchvision import transforms
 from sklearn.metrics import classification_report, confusion_matrix
 import sys
 
-# Add MedCLIP to path
-sys.path.insert(0, './MedCLIP')
+# Add MedCLIP to path - updated for new folder structure
+current_dir = os.path.dirname(os.path.abspath(__file__))
+project_root = os.path.join(current_dir, '..', '..')
+sys.path.insert(0, os.path.join(project_root, 'MedCLIP'))
 
 from medclip.modeling_medclip import MedCLIPModel, MedCLIPVisionModelViT
 from medclip.dataset import SuperviseImageDataset, SuperviseImageCollator

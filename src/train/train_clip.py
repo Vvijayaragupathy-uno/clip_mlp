@@ -39,14 +39,15 @@ print(f"Device: {device}")
 train_config = {
     'batch_size': 16,
     'num_epochs': 100,
-    'lr': 5e-5,
+    'lr': 1e-3,  # Higher LR for MLP-only training
     'weight_decay': 0.01,
+    'max_grad_norm': 1.0,  # Gradient clipping
 }
 
 mlp_config = {
     'hidden_dims': [512, 256],
     'dropout': 0.4,
-    'freeze_backbone': False,  # Train entire model
+    'freeze_backbone': True,  # Freeze CLIP, train only MLP
 }
 
 dataset_config = {
@@ -132,14 +133,18 @@ print("\n" + "=" * 80)
 print("Preparing Data")
 print("=" * 80)
 
-# Note: Using MedCLIP's prepared data
+# Note: Using processed data from new folder structure
+current_dir = os.path.dirname(os.path.abspath(__file__))
+project_root = os.path.join(current_dir, '..', '..')
+data_dir = os.path.join(project_root, 'data', 'processed')
+
 train_dataset = ToxoDataset(
-    'MedCLIP/local_data/toxoplasmosis-train-meta.csv',
+    os.path.join(data_dir, 'toxoplasmosis-train-meta.csv'),
     transform=train_transform
 )
 
 val_dataset = ToxoDataset(
-    'MedCLIP/local_data/toxoplasmosis-val-meta.csv',
+    os.path.join(data_dir, 'toxoplasmosis-val-meta.csv'),
     transform=val_transform
 )
 
@@ -235,6 +240,8 @@ for epoch in range(train_config['num_epochs']):
         loss = outputs['loss_value']
         
         loss.backward()
+        # Gradient clipping to prevent NaN
+        torch.nn.utils.clip_grad_norm_(model.parameters(), train_config['max_grad_norm'])
         optimizer.step()
         scheduler.step()
         

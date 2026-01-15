@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Large model files (hosted on Google Drive)
+pretrained/
+models/*.pth
+models/*.bin
+inference/models/*.pth
+inference/models/*.bin
+*.zip
+
+# MedCLIP local data
+MedCLIP/local_data/
+local_data
+

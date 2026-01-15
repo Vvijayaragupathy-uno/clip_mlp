@@ -1,5 +1,1 @@
-# Inference models are hosted on Google Drive
-# Download from the links in ../models/DOWNLOAD.md
-# Then place the files here:
-# - medclip_best.bin
-# - clip_best.pth
+# Inference models are hosted on  [onedrive](https://uofnebraska-my.sharepoint.com/:f:/g/personal/68448133_nebraska_edu/IgDBqm2j9qTcQ6T2tbR1H3VjAW02UoVVbAOv2oW1z-xFkrU?e=OMvrJn) https://uofnebraska-my.sharepoint.com/:f:/g/personal/68448133_nebraska_edu/IgDBqm2j9qTcQ6T2tbR1H3VjAW02UoVVbAOv2oW1z-xFkrU?e=OMvrJn
